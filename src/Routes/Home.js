@@ -1,6 +1,11 @@
+import "./Home.css"
+import Search from "../Components/Search";
+
 function Home() {
     return (
-        <h1>Home component</h1>
+        <div className="Home-wrapper">
+            <Search />
+        </div>
     );
 }
 
