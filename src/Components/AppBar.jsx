@@ -18,7 +18,7 @@ export default function ButtonAppBar() {
             </Link>
           </Typography>
           <Typography sx={{ minWidth: 100 }}>
-          <IconButton
+            <IconButton
               size="medium"
               aria-label="show 17 new notifications"
               color="inherit"
