@@ -5,6 +5,8 @@ function Home() {
     return (
         <div className="Home-wrapper">
             <Search />
+            <div className="poke-list-wrapper">
+            </div>
         </div>
     );
 }
