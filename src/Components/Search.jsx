@@ -1,22 +1,19 @@
 import "./Search.css";
-import { IconButton, TextField } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
+import { TextField } from "@mui/material";
 import { useContext } from "react";
-import { AppContext } from "../App";
+import { AppContext } from "../Context/AppProvider";
+
 
 export default function Search() {
-    const appContext = useContext(AppContext);
+    const { handleSearchText } = useContext(AppContext);
 
     function handleOnChange(event) {
-        appContext.changeText(event.target.value);
+        handleSearchText(event.target.value);
     }
 
     return (
         <div className="Search-wrapper">
             <TextField onChange={handleOnChange} id="outlined-basic" label="Search" variant="outlined" sx={{ width: 450 }} />
-            <IconButton onClick={appContext.makeSearch}>
-                <SearchIcon />
-            </IconButton>
         </div>
     )
 }

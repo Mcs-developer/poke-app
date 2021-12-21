@@ -3,31 +3,22 @@ import Home from "./Routes/Home";
 import Favorites from "./Routes/Favorites";
 import { Routes, Route } from "react-router-dom";
 import ButtonAppBar from "./Components/AppBar";
-import React, { useState } from "react";
-
-export const AppContext = React.createContext({
-  searchText: '',
-  isLoading: false
-});
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "./Context/AppProvider";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [searchText, setSearchText] = useState('');
+  const { getPokeList, isLoading, setIsLoading } = useContext(AppContext);
 
-  const setIsLoadingApp = (value) => {
-    setIsLoading(() => value);
-  }
-
-  const changeText = (text) => {
-    setSearchText(() => text);
-  }
-
-  const makeSearch = () => {
-    fetch('https://pokeapi.co/api/v2/')
-  }
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      getPokeList();
+    }, 2000);
+  },[]);
 
   return (
-    <AppContext.Provider value={{ changeText, makeSearch }}>
+    <div>
       <ButtonAppBar />
       {isLoading && (
         <div>
@@ -38,7 +29,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="favorites" element={<Favorites />} />
       </Routes>
-    </AppContext.Provider>
+    </div>
   );
 }
 
