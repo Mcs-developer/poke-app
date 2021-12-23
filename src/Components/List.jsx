@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../Context/AppProvider";
 
-function List(props) {
-    const { searchText } = useContext(AppContext);
-    const list = props.pokemons;
-    const [pokemonListFiltered, setPokemonList] = useState([]);
+function List() {
+    const { searchText, pokemons } = useContext(AppContext);
+    const [pokemonListFiltered, setPokemonList] = useState(pokemons);
 
     useEffect(() => {
-        setPokemonList(list.filter(p => p.name.includes(searchText)));
-    }, [searchText]);
+        const listFiltered = searchText !== '' ? pokemons.filter(p => p.name.includes(searchText)) : pokemons.slice();
+        setPokemonList(listFiltered);
+    }, [searchText, pokemons]);
 
     return (
         <ul>
