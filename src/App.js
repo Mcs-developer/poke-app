@@ -19,7 +19,7 @@ function App() {
       setPokemons(data.results);
       setIsLoading(false);
     }, 2000);
-  }, []);
+  }, [setIsLoading, setPokemons]);
 
   return (
     <div>
