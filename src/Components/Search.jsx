@@ -5,10 +5,10 @@ import { AppContext } from "../Context/AppProvider";
 
 
 export default function Search() {
-    const { handleSearchText } = useContext(AppContext);
+    const { setSearchText } = useContext(AppContext);
 
     function handleOnChange(event) {
-        handleSearchText(event.target.value);
+        setSearchText(event.target.value);
     }
 
     return (
