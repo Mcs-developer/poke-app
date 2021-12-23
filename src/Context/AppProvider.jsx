@@ -4,6 +4,7 @@ export const AppContext = React.createContext();
 function AppProvider({ children }) {
     const [isLoading, setIsLoading] = useState(false);
     const [searchText, setSearchText] = useState('');
+    const [pokemons, setPokemons] = useState([]);
 
     const getPokeList = () => {
         console.log('doing request...');
@@ -14,7 +15,9 @@ function AppProvider({ children }) {
         setIsLoading,
         searchText,
         setSearchText,
-        getPokeList
+        getPokeList,
+        pokemons,
+        setPokemons
     };
 
     return (
