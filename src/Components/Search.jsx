@@ -5,7 +5,7 @@ import { AppContext } from "../Context/AppProvider";
 
 
 export default function Search() {
-    const { setSearchText } = useContext(AppContext);
+    const { searchText, setSearchText } = useContext(AppContext);
 
     function handleOnChange(event) {
         setSearchText(event.target.value);
@@ -13,7 +13,7 @@ export default function Search() {
 
     return (
         <div className="Search-wrapper">
-            <TextField onChange={handleOnChange} id="outlined-basic" label="Search" variant="outlined" sx={{ width: 450 }} />
+            <TextField value={searchText} onChange={handleOnChange} id="outlined-basic" label="Search" variant="outlined" sx={{ width: 450 }} />
         </div>
     )
 }
