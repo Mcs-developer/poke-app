@@ -3,27 +3,29 @@ import Home from "./Routes/Home";
 import Favorites from "./Routes/Favorites";
 import { Routes, Route } from "react-router-dom";
 import ButtonAppBar from "./Components/AppBar";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "./Context/AppProvider";
+import Spinner from "./Components/Spinner";
 
 function App() {
-  const { getPokeList, isLoading, setIsLoading } = useContext(AppContext);
+  const { setPokemons, isLoading, setIsLoading } = useContext(AppContext);
+  
 
   useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
+      const data = require('./poke_response.json');
+
+      setPokemons(data.results);
       setIsLoading(false);
-      getPokeList();
     }, 2000);
-  },[]);
+  }, []);
 
   return (
     <div>
       <ButtonAppBar />
       {isLoading && (
-        <div>
-          Spinner
-        </div>
+        <Spinner></Spinner>
       )}
       <Routes>
         <Route path="/" element={<Home />} />
