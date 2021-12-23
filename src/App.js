@@ -23,10 +23,10 @@ function App() {
 
   return (
     <div>
-      <ButtonAppBar />
-      {isLoading && (
+       {isLoading && (
         <Spinner></Spinner>
       )}
+      <ButtonAppBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="favorites" element={<Favorites />} />
